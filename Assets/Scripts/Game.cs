@@ -30,7 +30,7 @@ public class Game : MonoBehaviour
     {
         int kostilScore; //позволяет отображать тазики в целом формате
         kostilScore = (int)score;
-        scoreText.text = "ТАЗИКИ: " + kostilScore;
+        scoreText.text = "ТАЗИКИ: " + kostilScore + "₸";
         scorePerSecond = (one.IncreaseValue * one.Amount) + (two.IncreaseValue * two.Amount);
         scorePerSecondText.text = "Тазики в секунду: " + scorePerSecond;
         //curr_time -= Time.deltaTime; //Вычитаем из 1 секунды время кадра(оно в миллисекундах)
@@ -48,14 +48,14 @@ public class Game : MonoBehaviour
             UpgrButton_2.interactable = false;
 
         //UpgrButton_1Text.text = "Улучшение 1 " + one.Cost;
-        ConvertCostDoubleToInt(UpgrButton_1Text, one.Cost, "Улучшение 1"); // функция отображения стоимости улучшения
-        ConvertCostDoubleToInt(UpgrButton_2Text, two.Cost, "Улучшение 2");
+        ConvertCostDoubleToInt(UpgrButton_1Text, one.Cost, one.Amount, "Улучшение 1"); // функция отображения стоимости улучшения
+        ConvertCostDoubleToInt(UpgrButton_2Text, two.Cost, two.Amount, "Улучшение 2");
         
 
 
     }
 
-    class Bonus
+    public class Bonus
     {
         public string Name;
         public double Cost; //цена
@@ -104,10 +104,10 @@ public class Game : MonoBehaviour
         }
     }
 
-    public void ConvertCostDoubleToInt(Text text, double Cost, string UpgrName) //функция которая отображает на кнопке динамичную стоимость улучшения; первым параметром передаем сам текстовый объект кнопки, вторым стоимость, третьим название кнопки(потому что иначе стирается весь текст кнопочки)
+    public void ConvertCostDoubleToInt(Text text, double Cost, int Amount, string UpgrName) //функция которая отображает на кнопке динамичную стоимость улучшения; первым параметром передаем сам текстовый объект кнопки, вторым стоимость, третьим название кнопки(потому что иначе стирается весь текст кнопочки)
     {
         int conv;
         conv = (int)Cost;
-        text.text = UpgrName + " " + conv;
+        text.text = UpgrName + "  " + conv + "₸  " + Amount + "шт.";
     }
 }
