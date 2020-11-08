@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
@@ -50,6 +51,11 @@ public class Game : MonoBehaviour
         //UpgrButton_1Text.text = "Улучшение 1 " + one.Cost;
         ConvertCostDoubleToInt(UpgrButton_1Text, one.Cost, one.Amount, "Улучшение 1"); // функция отображения стоимости улучшения
         ConvertCostDoubleToInt(UpgrButton_2Text, two.Cost, two.Amount, "Улучшение 2");
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu"); //выход в главное меню по Esc
+        }
         
 
 
